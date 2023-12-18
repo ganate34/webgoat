@@ -31,17 +31,17 @@ agent any
       }
     stage('Test1'){
       steps{
-        echo 'Hi There!! This is the first phase - Test1'
+        sh 'java --version'
       }
     }
     stage('Test2'){
       steps{
-        echo 'Hi There!! Welcome. This is the second phase - Test2'
+        sh 'mvn --version'
       }
     }
     stage('CompileandRunSonarAnalysis') {
             steps {	
-		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=ganate34github -Dsonar.organization=ganate34github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=88cb0a5fb57556c50b136668178348f51c780530'
+		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=ganate34github-test1 -Dsonar.organization=ganate34github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=953115046d6108cbd76287ea98a735f6cd7c7df8'
 			}
     }
   }
