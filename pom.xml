@@ -131,7 +131,6 @@
     <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
     <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
     <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
-    <maven-surefire-plugin.version>3.2.1</maven-surefire-plugin.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <pmd.version>3.15.0</pmd.version>
@@ -543,14 +542,6 @@
         </executions>
       </plugin>
       <plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-plugin</artifactId>
-		    <version>2.19.1</version>
-			<configuration>
-    		<testFailureIgnore>true</testFailureIgnore>
-			</configuration>
-		</plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>${checkstyle.version}</version>
@@ -796,23 +787,6 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>            
-            <configuration>
-              <argLine>--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
-          --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED
-          --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
-          --add-opens java.base/java.text=ALL-UNNAMED --add-opens java.desktop/java.awt.font=ALL-UNNAMED
-          ${surefire.jacoco.args}</argLine>
-              <excludes>
-                <exclude>**/*IntegrationTest.java</exclude>
-                <exclude>src/it/java</exclude>
-                <exclude>org/owasp/webgoat/*Test</exclude>
-              </excludes>
-            </configuration>
-          </plugin>
-          <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <executions>
@@ -823,7 +797,7 @@
                 </goals>
                 <configuration>
                   <destFile>${project.build.directory}/jacoco/jacoco-ut.exec</destFile>
-                  <propertyName>surefire.jacoco.args</propertyName>
+                  <propertyName>test.jacoco.args</propertyName>
                 </configuration>
               </execution>
               <execution>
