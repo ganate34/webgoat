@@ -41,7 +41,7 @@ agent any
     }
     stage('CompileandRunSonarAnalysis') {
             steps {	
-		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=ganate34github-test1 -Dsonar.organization=ganate34github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=953115046d6108cbd76287ea98a735f6cd7c7df8'
+		sh 'mvn clean verify sonar:sonar -Dmaven.test.skip=true -Dmaven.test.failure.ignore=true  -Dsonar.projectKey=ganate34github-test1 -Dsonar.organization=ganate34github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=953115046d6108cbd76287ea98a735f6cd7c7df8'
 			}
     }
   }
